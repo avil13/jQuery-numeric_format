@@ -16,7 +16,12 @@ jQuery(document).ready(function($) {
             'dcSep': ',' // Проверка указания десятичного разделителя
         }, options);
 
-        var val = $(this).html();
+
+        var str = $(this).html().toString();
+
+        var val = str.replace(/[^\d\.\,]/g, "");
+
+
 
         var res = val.toString();
         var lZero = (val < 0); // Признак отрицательного числа
@@ -38,6 +43,9 @@ jQuery(document).ready(function($) {
             settings.tmpRes = res.charAt(ind - 1) + settings.tmpRes;
         }
 
-        $(this).html(settings.tmpRes.replace('.', settings.dcSep));
+
+        var r = str.replace(new RegExp(val, 'g'), settings.tmpRes.replace('.', settings.dcSep));
+
+        $(this).html(r);
     };
 })(jQuery);
