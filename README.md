@@ -13,11 +13,11 @@ jQuery(document).ready(function($) {
 
 вместо  
 ```html
-<p class="nead-formatting">123123.12</p>
+<p class="nead-formatting">123123.12 рублей</p>
 ```  
 Получаем  
 ```html
-<p class="nead-formatting">123 123,12</p>
+<p class="nead-formatting">123 123,12 рублей</p>
 ```
 
 **Опции**  
