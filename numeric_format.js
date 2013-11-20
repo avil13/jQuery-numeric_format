@@ -23,7 +23,10 @@ jQuery(document).ready(function($) {
             var str = $(el).html().toString();
 
             var val = str.replace(/[^\d\.\,]/g, "");
-
+            
+            while(val[val.length-1]==='.'||val[val.length-1]===','){
+                val = val.substring(0, val.length-1);
+            }
 
             var res = val.toString();
             var lZero = (val < 0); // Признак отрицательного числа
