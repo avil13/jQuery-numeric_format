@@ -3,6 +3,8 @@ jQuery-numeric_format
 
 
 [Demo](http://avil13.github.io/demo/numeric_format/ "demo")
+===
+
 
 
 Заменяет форматирование чисел в указанных селекторах  
