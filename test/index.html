@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test for Numeric Format</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../numeric_format.js"></script>
+    <style>
+    .container{
+        margin-top: 100px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-xs-8 col-xs-offset-2 jumbotron">
+            <div class="form-group">
+                <label for="number">Number</label>
+                <input type="text" name="number" id="number" value="1000000 $" class="form-control">
+            </div>
+
+            <div class="well">1000000 $</div>
+        </div>
+    </div>
+
+
+    <script>
+    jQuery(document).ready(function($) {
+
+        $('#number').keyup(function() {
+            var val = $(this).val();
+            $('.well').html( val );
+        });
+
+
+        $('.well').numeric_format({
+            watch: true,
+            dcSep: ',,'
+        });
+    });
+    </script>
+
+</body>
+</html>

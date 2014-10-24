@@ -3,6 +3,8 @@
 jQuery(document).ready(function($) {
     $('p.nead-formatting').numeric_format({thSep:' ', dcSep:','});
 });
+
+wersion: 0.3
 */
 
 (function($) {
@@ -13,7 +15,8 @@ jQuery(document).ready(function($) {
 
         var settings = $.extend({
             'thSep': ' ', // Проверка указания разделителя разрядов
-            'dcSep': ',' // Проверка указания десятичного разделителя
+            'dcSep': ',', // Проверка указания десятичного разделителя,
+            'watch': false
         }, options);
 
 
@@ -23,9 +26,9 @@ jQuery(document).ready(function($) {
             var str = $(el).html().toString();
 
             var val = str.replace(/[^\d\.\,]/g, "");
-            
-            while(val[val.length-1]==='.'||val[val.length-1]===','){
-                val = val.substring(0, val.length-1);
+
+            while (val[val.length - 1] === '.' || val[val.length - 1] === ',') {
+                val = val.substring(0, val.length - 1);
             }
 
             var res = val.toString();
@@ -51,6 +54,24 @@ jQuery(document).ready(function($) {
             var r = str.replace(new RegExp(val, 'g'), settings.tmpRes.replace('.', settings.dcSep));
 
             $(el).html(r);
+
+            if (settings.watch) {
+                $(el).bind('DOMSubtreeModified', function() {
+
+                    return (function(self) {
+                        var opt;
+
+                        if (opt === undefined) {
+                            opt = settings;
+                            opt.watch = false;
+                            console.table([opt]);
+                            $(self).numeric_format(opt);
+                            console.log( self );
+                        }
+                    })(this);
+
+                });
+            }
         };
 
 
