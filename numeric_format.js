@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
     $('p.nead-formatting').numeric_format({thSep:' ', dcSep:','});
 });
 
-wersion: 0.3
+wersion: 0.1.3
 */
 
 (function($) {
